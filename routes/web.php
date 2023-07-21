@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\File;
 | It is a breeze. Simply tell Lumen the URIs it should respond to
 | and give it the Closure to call when that URI is requested.
 |
- */
+*/
 
 $router->get('/', function () use ($router) {
     return $router->app->version();
@@ -47,8 +47,8 @@ $router->get('/admin', function () {
 // });
 
 
-$router->post('multiple-image-upload', "ImageUploadController@uploadFiles" );
-$router->post('single-image-upload', "ImageUploadController@uploadSingleFile" );
+$router->post('multiple-image-upload', "ImageUploadController@uploadFiles");
+$router->post('single-image-upload', "ImageUploadController@uploadSingleFile");
 
 
 

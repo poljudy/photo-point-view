@@ -10,7 +10,7 @@ $router->group(['namespace' => 'Auth'], function () use ($router) {
  * after login routes access
  */
 $router->group(['middleware' => ["auth:api"]], function () use ($router) {
-    $router->group(['namespace' => 'Orders'],  function () use ($router) {
+    $router->group(['namespace' => 'Orders'], function () use ($router) {
         $router->post('/orders-list', "OrderController@list");
         $router->post('/orders-status-change', "OrderController@changeStatus");
 
@@ -23,7 +23,7 @@ $router->group(['middleware' => ["auth:api"]], function () use ($router) {
         $router->post('/create-a-order', "ShiporderAPIController@createOrder");
     });
 
- 
+
     // pickup-location
     $router->group(['namespace' => 'Shopper'], function () use ($router) {
         $router->post('/pickup-location-list', "PickupLocationController@list");
