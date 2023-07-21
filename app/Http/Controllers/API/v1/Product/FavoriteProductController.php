@@ -42,7 +42,8 @@ class FavoriteProductController extends Controller
                 return $this->sendBadRequest(null, $e->getCode() . ' - ' . $e->getMessage());
             }
 
-            if (isset($favoriteProduct) && $favoriteProduct['flag'] == false) return $this->sendBadRequest($favoriteProduct['data'], $favoriteProduct['mesasge']);
+            if (isset($favoriteProduct) && $favoriteProduct['flag'] == false)
+                return $this->sendBadRequest($favoriteProduct['data'], $favoriteProduct['mesasge']);
             return $this->sendSuccessResponse($favoriteProduct['data'], $favoriteProduct['message']);
 
         } else {
@@ -67,7 +68,8 @@ class FavoriteProductController extends Controller
 
         $favoriteProduct = $this->commonCreateUpdateFn($input);
 
-        if (isset($favoriteProduct) && $favoriteProduct['flag'] == false) return $this->sendBadRequest($favoriteProduct['data'], $favoriteProduct['message']);
+        if (isset($favoriteProduct) && $favoriteProduct['flag'] == false)
+            return $this->sendBadRequest($favoriteProduct['data'], $favoriteProduct['message']);
 
         return $this->sendSuccessResponse($favoriteProduct, $favoriteProduct['message']);
 
@@ -86,7 +88,8 @@ class FavoriteProductController extends Controller
         $input['user_id'] = \Auth::id();
 
         $validation = FavoriteProducts::validation($input);
-        if (isset($validation) && $validation->errors()->count() > 0) return $this->makeError(null, $validation->errors()->first());
+        if (isset($validation) && $validation->errors()->count() > 0)
+            return $this->makeError(null, $validation->errors()->first());
 
 
         /** check already exist or not */
@@ -96,7 +99,8 @@ class FavoriteProductController extends Controller
             'first' => true
         ];
 
-        if (isset($id)) $requestForFavorite['id'] = $id;
+        if (isset($id))
+            $requestForFavorite['id'] = $id;
 
         $alreadyFavoriteProduct = $this->favoriteProductRepository->getDetailsByInput(
             $requestForFavorite
@@ -111,8 +115,10 @@ class FavoriteProductController extends Controller
             $alreadyFavoriteProduct->save();
         }
 
-        if (isset($id)) return $this->makeResponse($alreadyFavoriteProduct, __('validation.common.successfully_unfavorite'));
-        else return $this->makeResponse($alreadyFavoriteProduct, __('validation.common.successfully_favorite'));
+        if (isset($id))
+            return $this->makeResponse($alreadyFavoriteProduct, __('validation.common.successfully_unfavorite'));
+        else
+            return $this->makeResponse($alreadyFavoriteProduct, __('validation.common.successfully_favorite'));
 
     }
 
@@ -122,9 +128,9 @@ class FavoriteProductController extends Controller
 
         $input['user_id'] = isset($input['user_id']) ? $input['user_id'] : \Auth::id();
 
-         try {
+        try {
 
-//             if (isset($input['is_favorite'])){
+            //             if (isset($input['is_favorite'])){
 //
 //             }
             $favoriteProduct = $this->favoriteProductRepository->getDetails($input);
@@ -133,7 +139,8 @@ class FavoriteProductController extends Controller
             \Log::error($exception->getCode() . ' - ' . $exception->getMessage());
             return $this->sendBadRequest(null, $exception->getCode() . ' - ' . $exception->getMessage());
         }
-        if (isset($favoriteProduct) && $favoriteProduct['count'] == 0) return $this->sendBadRequest(null, __('validation.common.details_not_found', ['module' => $this->moduleName]));
+        if (isset($favoriteProduct) && $favoriteProduct['count'] == 0)
+            return $this->sendBadRequest(null, __('validation.common.details_not_found', ['module' => $this->moduleName]));
 
         return $this->sendSuccessResponse($favoriteProduct, __('validation.common.details_found', ['module' => $this->moduleName]));
     }

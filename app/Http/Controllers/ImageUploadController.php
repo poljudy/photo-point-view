@@ -15,8 +15,7 @@ class ImageUploadController extends Controller
      */
     public function __construct(
         ImageHelperController $imageController
-    )
-    {
+    ) {
         $this->imageController = $imageController;
     }
 
@@ -27,7 +26,7 @@ class ImageUploadController extends Controller
     public function uploadSingleFile(Request $request)
     {
         $input = $request->all();
-//        dd("Input", $input, $request);
+        //        dd("Input", $input, $request);
 
         /**
          * Validate Image Extensions
@@ -35,7 +34,7 @@ class ImageUploadController extends Controller
         $validator = Validator::make($request->all(), [
             'folder_name' => 'required',
             'image' => 'required',
-//            |mimes:pdf,jpg,png
+            //            |mimes:pdf,jpg,png
         ]);
         if ($validator->fails()) {
             return $this->sendBadRequest(null, $validator->errors()->all());
@@ -48,7 +47,7 @@ class ImageUploadController extends Controller
             return $this->sendBadRequest(null, $data['message']);
         }
         $image = $data['data']['image'];
-//        $image = env('APP_URL', url('/')) . $image;
+        //        $image = env('APP_URL', url('/')) . $image;
         return $this->sendSuccessResponse($image, __('validation.common.saved', ['module' => "image"]));
     }
 
@@ -81,7 +80,8 @@ class ImageUploadController extends Controller
                 $extension = $file->getClientOriginalExtension();
                 $check = in_array($extension, $allowableExtension);
 
-                if (isset($check) && $check === false) return $this->sendBadRequest(null, __('validation.common.invalid_key', ['key' => "file extension"]));
+                if (isset($check) && $check === false)
+                    return $this->sendBadRequest(null, __('validation.common.invalid_key', ['key' => "file extension"]));
                 /** Upload Image here */
             }
             return $this->sendSuccessResponse($images, __('validation.common.saved', ['module' => "images"]));
@@ -100,7 +100,7 @@ class ImageUploadController extends Controller
         /**
          * Multiple Upload
          */
-//        if (isset($input['images']) && is_array($input['images']) && count($input['images']) > 0) {
+        //        if (isset($input['images']) && is_array($input['images']) && count($input['images']) > 0) {
 //            foreach ($input['images'] as $key => $image) {
 //                $data = $this->imageController->moveFile($image, 'products');
 //                array_push($input['images'], $data['data']['image']);

@@ -34,10 +34,10 @@ class Controller extends AppController
         if ($user->email_verified_at == null) {
             $user->email_verified_at = Carbon::now(env('APP_TIMEZONE', 'UTC'));
             $user->save();
-            $successMessage =  __('validation.common.successfully_activated_account');
+            $successMessage = __('validation.common.successfully_activated_account');
             echo "<script> alert('$successMessage'); </script>";
         } else {
-            $errorMessage =  __('validation.common.already_account_activated');
+            $errorMessage = __('validation.common.already_account_activated');
             echo "<script> alert( '$errorMessage' );  </script>";
         }
         echo "<script>window.close();</script>";

@@ -38,8 +38,8 @@ class HelperController extends Controller
             $min = $timesArr[1] ?? 0;
             $sec = $timesArr[2] == "00" ? 0 : 1;
             $totalMinutes = ((((int) ($hr)) ?? 0) * 60)
-             + ((((int) ($min)) ?? 0))
-             + (int) $sec;
+                + ((((int) ($min)) ?? 0))
+                + (int) $sec;
             $this->T = $totalMinutes;
             // return $totalMinutes;
         } else {
@@ -102,10 +102,10 @@ class HelperController extends Controller
     public function calculateFirstStepOf_V_DOT($input = null)
     {
         $this->VO2 = -4.6 + 0.182258
-         * ($this->DIST / $this->T)
-         + 0.000104
-         * ($this->DIST / $this->T)
-         ^ 2;
+            * ($this->DIST / $this->T)
+            + 0.000104
+            * ($this->DIST / $this->T)
+            ^ 2;
     }
 
     /**
@@ -120,9 +120,9 @@ class HelperController extends Controller
     public function calculateSecondStepOf_V_DOT($input = null)
     {
         $this->PERCENT_MAX = 0.8 + 0.1894393
-         * exp(-0.012778 * $this->T)
-         + 0.2989558
-         * exp(-0.1932605 * $this->T);
+            * exp(-0.012778 * $this->T)
+            + 0.2989558
+            * exp(-0.1932605 * $this->T);
     }
 
     /**
@@ -174,10 +174,11 @@ class HelperController extends Controller
     {
         $this->TARGET = ($this->DIST * 2 * 0.000104)
             / (-0.182258
-             +
-            sqrt(
-                0.182258 ^ 2 - 4 * 0.000104 * (-4.6 - 0.67 * $this->vDOT)
-            ));
+                +
+                sqrt(
+                    0.182258 ^ 2 - 4 * 0.000104 * (-4.6 - 0.67 * $this->vDOT)
+                )
+            );
     }
 
     /**
@@ -189,10 +190,11 @@ class HelperController extends Controller
     {
         $this->TARGET = ($this->DIST * 2 * 0.000104)
             / (-0.182258
-             +
-            sqrt(
-                0.182258 ^ 2 - 4 * 0.000104 * (-4.6 - 0.67 * $this->vDOT)
-            ));
+                +
+                sqrt(
+                    0.182258 ^ 2 - 4 * 0.000104 * (-4.6 - 0.67 * $this->vDOT)
+                )
+            );
     }
 
     /**
@@ -204,10 +206,11 @@ class HelperController extends Controller
     {
         $this->TARGET = ($this->DIST * 2 * 0.000104)
             / (-0.182258
-             +
-            sqrt(
-                0.182258 ^ 2 - 4 * 0.000104 * (-4.6 - 0.975 * $this->vDOT)
-            ));
+                +
+                sqrt(
+                    0.182258 ^ 2 - 4 * 0.000104 * (-4.6 - 0.975 * $this->vDOT)
+                )
+            );
     }
     /**
      * calculateForTvDot => Calculate R
@@ -218,10 +221,11 @@ class HelperController extends Controller
     {
         $this->TARGET = ($this->DIST * 2 * 0.000104)
             / (-0.182258
-             +
-            sqrt(
-                0.182258 ^ 2 - 4 * 0.000104 * (-4.6 - 0.975 * $this->vDOT)
-            ));
+                +
+                sqrt(
+                    0.182258 ^ 2 - 4 * 0.000104 * (-4.6 - 0.975 * $this->vDOT)
+                )
+            );
     }
 
     /**
@@ -233,9 +237,10 @@ class HelperController extends Controller
     {
         $this->TARGET = ($this->DIST * 2 * 0.000104)
             / (-0.182258
-             +
-            sqrt(
-                0.182258 ^ 2 - 4 * 0.000104 * (-4.6 - 0.88 * $this->vDOT)
-            ));
+                +
+                sqrt(
+                    0.182258 ^ 2 - 4 * 0.000104 * (-4.6 - 0.88 * $this->vDOT)
+                )
+            );
     }
 }

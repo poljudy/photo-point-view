@@ -19,7 +19,7 @@ class SettingController extends Controller
         $response['support_refund_and_cancellation_policy'] = url('refund-and-cancellation-policy');
         // SETTING_SUPPORT_WEBSITE;
 
-        $response['support_website'] =  env('APP_URL', url('/'));
+        $response['support_website'] = env('APP_URL', url('/'));
 
         $response['support_contact_number'] = SETTING_SUPPORT_CONTACT_NUMBER;
 

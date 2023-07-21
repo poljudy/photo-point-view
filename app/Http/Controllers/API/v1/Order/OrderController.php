@@ -70,7 +70,7 @@ class OrderController extends Controller
 
         /** clear all cart details after order has been planced */
         $this->cartRepository->deleteWhere(['user_id' => $this->userId]);
-        return $this->sendSuccessResponse(/* $order */null, __('validation.common.order_placed_success'));
+        return $this->sendSuccessResponse( /* $order */null, __('validation.common.order_placed_success'));
     }
 
     public function getOrderDetailsFromCart(Request $request)
