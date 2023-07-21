@@ -43,7 +43,8 @@ class ComplaintController extends Controller
     {
         $input = $request->all();
         $data = $this->commonCreateUpdate($input);
-        if (isset($data) && $data['flag'] == false) return $this->sendBadRequest($data['data'], $data['message']);
+        if (isset($data) && $data['flag'] == false)
+            return $this->sendBadRequest($data['data'], $data['message']);
         return $this->sendSuccessResponse($data['data'], __('validation.common.created', ['module' => "Complaint"]));
     }
 
@@ -57,9 +58,11 @@ class ComplaintController extends Controller
             'user_id' => \Auth::id(),
             'first' => true
         ]);
-        if (!!!isset($complaint)) return $this->sendBadRequest(null, __('validation.common.details_not_found', ['module' => "Complaint"]));
+        if (!!!isset($complaint))
+            return $this->sendBadRequest(null, __('validation.common.details_not_found', ['module' => "Complaint"]));
         $data = $this->commonCreateUpdate($input, $id);
-        if (isset($data) && $data['flag'] == false) return $this->sendBadRequest($data['data'], $data['message']);
+        if (isset($data) && $data['flag'] == false)
+            return $this->sendBadRequest($data['data'], $data['message']);
         return $this->sendSuccessResponse($data['data'], $data['message']);
     }
 
@@ -132,7 +135,8 @@ class ComplaintController extends Controller
             'user_id' => \Auth::id(),
             'first' => true
         ]);
-        if (!!!isset($complaint)) return $this->sendBadRequest(null, __('validation.common.details_not_found', ['module' => "complaint"]));
+        if (!!!isset($complaint))
+            return $this->sendBadRequest(null, __('validation.common.details_not_found', ['module' => "complaint"]));
         /** final delete. */
         $this->complaintRepository->delete($id);
         return $this->sendSuccessResponse($complaint, __('validation.common.deleted', ['module' => 'complaint']));
@@ -145,7 +149,8 @@ class ComplaintController extends Controller
 
         $complaintCategoriesList = $this->complaintCategoryRepository->getDetailsByInput($input);
 
-        if (!!!isset($complaintCategoriesList)) return $this->sendBadRequest(null, __('validation.common.details_not_found', ['module' => "complaint category"]));
+        if (!!!isset($complaintCategoriesList))
+            return $this->sendBadRequest(null, __('validation.common.details_not_found', ['module' => "complaint category"]));
 
         return $this->sendSuccessResponse($complaintCategoriesList, __('validation.common.details_found', ['module' => "complaint category"]));
     }

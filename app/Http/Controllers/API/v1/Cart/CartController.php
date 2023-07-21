@@ -76,7 +76,10 @@ class CartController extends Controller
         $cart = $this->getCartDetails([
             'id' => $cart->id,
             'relation' => [
-                'user', 'product', 'product.customer_rating', 'stock_inventory'
+                'user',
+                'product',
+                'product.customer_rating',
+                'stock_inventory'
             ],
             // 'stock_inventory_list' => ['product_id', 'images', 'sale_price', 'mrp_price'],
             'first' => true,

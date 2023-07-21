@@ -48,7 +48,7 @@ class ImageHelperController extends Controller
         //     $image = str_replace('data:image/png;base64,', '', $file);
         // $image = str_replace(' ', '+', $image);
         // $fileName = str_random(10) . '.' . 'png';
-         $fileName = $file->getClientOriginalName();
+        $fileName = $file->getClientOriginalName();
 
         /** FIXME make compress image file */
         if (isset($fileName)) {
@@ -137,24 +137,24 @@ class ImageHelperController extends Controller
         return end($arrayName);
     }
 
-    /**
-     *  Not working.
-     */
-    // public function fileMoveToStorage($fileUrl)
-    // {
-    //     $moduleName = 'profiles';
-    //     $storageFilePath = '/uploaded/images/' . $moduleName;
-    //     $newPath = $fileUrl;
-    //     $oldPath =   $fileUrl;
-    //     $fileName = $this->getFileNameFromPath($fileUrl);
-    //     try {
-    //         if (move_uploaded_file($oldPath, $newPath)) {
-    //             return $this->makeResponse(['image' => $fileUrl], __("validation.common.file_success_upload"));
-    //         } else {
-    //             return $this->makeError([], __('validation.common.error_in_file_upload'));
-    //         }
-    //     } catch (\Exception $ex) {
-    //         \Log::error($ex->getMessage());
-    //     }
-    // }
+/**
+ *  Not working.
+ */
+// public function fileMoveToStorage($fileUrl)
+// {
+//     $moduleName = 'profiles';
+//     $storageFilePath = '/uploaded/images/' . $moduleName;
+//     $newPath = $fileUrl;
+//     $oldPath =   $fileUrl;
+//     $fileName = $this->getFileNameFromPath($fileUrl);
+//     try {
+//         if (move_uploaded_file($oldPath, $newPath)) {
+//             return $this->makeResponse(['image' => $fileUrl], __("validation.common.file_success_upload"));
+//         } else {
+//             return $this->makeError([], __('validation.common.error_in_file_upload'));
+//         }
+//     } catch (\Exception $ex) {
+//         \Log::error($ex->getMessage());
+//     }
+// }
 }

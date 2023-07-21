@@ -28,8 +28,7 @@ class ProductController extends Controller
         FavoriteProductRepositoryEloquent $favoriteProductRepository,
         FeatureProductRepositoryEloquent $featureProductRepository,
         UsersRepositoryEloquent $userRepository
-    )
-    {
+    ) {
         $this->userId = \Auth::id();
         $this->productStockInventoryRepository = $productStockInventoryRepository;
         $this->orderRateReviewRepository = $orderRateReviewRepository;
@@ -116,7 +115,7 @@ class ProductController extends Controller
 
             $input['ids'] = $favoriteProductIds;
         } else {
-//            TODO Test Commented
+            //            TODO Test Commented
 //            $validation = $this->requiredAllKeysValidation(['category_id'], $input);
 //            if (isset($validation['flag']) && $validation['flag'] == false) {
 //                return $this->sendBadRequest(null, $validation['message']);
@@ -177,8 +176,8 @@ class ProductController extends Controller
                 "common_product_attribute_size_detail",
                 "common_product_attribute_color_detail"
             ],
-            "common_product_attribute_size_detail_list" => [ "id", 'name', "is_active"],
-            "common_product_attribute_color_detail_list" => [ "id", 'name', "is_active"]
+            "common_product_attribute_size_detail_list" => ["id", 'name', "is_active"],
+            "common_product_attribute_color_detail_list" => ["id", 'name', "is_active"]
         ]);
 
 
@@ -213,14 +212,14 @@ class ProductController extends Controller
         if (isset($input)) {
             $reviews = $this->orderRateReviewRepository->getDetailsByInput(
                 $input
-            //      [
-            //      'product_id' => $id,
-            //      'relation'  => ['customer_detail'],
-            //      'customer_detail_list' => ["id", "first_name", "photo", "email", "created_at"],
-            //      'list' => ["id", "product_id", "user_id", "review", "rate", "created_at"],
-            //      'page' => $input['page'] ?? 1,
-            //      'limit' => $input['limit'] ?? 5
-            //      ]
+                //      [
+                //      'product_id' => $id,
+                //      'relation'  => ['customer_detail'],
+                //      'customer_detail_list' => ["id", "first_name", "photo", "email", "created_at"],
+                //      'list' => ["id", "product_id", "user_id", "review", "rate", "created_at"],
+                //      'page' => $input['page'] ?? 1,
+                //      'limit' => $input['limit'] ?? 5
+                //      ]
             );
             return $reviews;
         }
@@ -237,7 +236,8 @@ class ProductController extends Controller
     {
         $input = $request->all();
         $reviews = $this->getProductRateReviewByInput($input);
-        if (isset($reviews) && count($reviews) == 0) return $this->sendBadRequest(null, __('validation.common.details_not_found', ['module' => "review and rate"]));
+        if (isset($reviews) && count($reviews) == 0)
+            return $this->sendBadRequest(null, __('validation.common.details_not_found', ['module' => "review and rate"]));
         return $this->sendSuccessResponse($reviews, __('validation.common.details_found', ['module' => 'review and rate']));
     }
 }
