@@ -1,7 +1,7 @@
-# Photo-Point REST-APIs using Laravel Framework With MySQL.
+# Photo-Point-Of-View REST-APIs using Laravel Framework With MySQL.
 
 ---
-![Project Image](https://github.com/vikas-ukani/photo-point/blob/master/public/images/photo-point-image.jpg)
+![Project Image](https://github.com/poljudy/photo-point-view/blob/master/public/images/photo-point-image.jpg)
 
 ---
 
@@ -253,7 +253,7 @@ This project is developed in Laravel framework with mysql database. The project 
 1. Clone this repository using.
 
 ```
-git clone https://github.com/vikas-ukani/photo-point.git
+git clone https://github.com/poljudy/photo-point-view.git
 ```
 
 2. Install and update composer
